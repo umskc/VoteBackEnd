@@ -1,13 +1,10 @@
 package pl.plenczewski.voicesystem.model;
 
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.*;
+import javax.persistence.MappedSuperclass;
 import java.time.LocalDate;
 
 @MappedSuperclass
-public class Project {
+public abstract class Project {
 
         private String title;
         private Float totalCost;
