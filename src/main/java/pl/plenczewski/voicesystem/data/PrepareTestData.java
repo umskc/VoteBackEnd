@@ -50,38 +50,37 @@ public class PrepareTestData {
     }
 
     private LocalProject createAndGetOneLocalProject() {
-        LocalProject localProject = new LocalProject();
-        localProject.setTitle("Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny");
-        localProject.setDeadLine(LocalDate.of(2020,11,30));
-        localProject.setTotalCost(new Float("1001.21"));
-        localProject.setZone(Zone.ZONE_1);
-        return localProject;
+        return LocalProject.builder()
+                .setTitle("Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny Tytul lokalny")
+                .setDeadLine(LocalDate.of(2020,11,30))
+                .setTotalCost(new Float("1001.21"))
+                .setZone(Zone.ZONE_1)
+                .build();
     }
 
     private GlobalProject createAndGetOneGlobalProject() {
-        GlobalProject globalProject = new GlobalProject();
-        globalProject.setTitle("Tytul pierwszy 1 Tytul pierwszy 1 Tytul pierwszy 1 Tytul pierwszy 1 Tytul pierwszy 1 ");
-        globalProject.setDeadLine(LocalDate.of(2020,12,30));
-        globalProject.setTotalCost(new Float("1000.21"));
-
-        return globalProject;
+        return GlobalProject.builder()
+                .setTitle("Tytul pierwszy 1 Tytul pierwszy 1 Tytul pierwszy 1 Tytul pierwszy 1 Tytul pierwszy 1 ")
+                .setDeadLine(LocalDate.of(2020,12,30))
+                .setTotalCost(new Float("1000.21"))
+                .build();
     }
     private Inhabitant createInhabitant(){
-        Inhabitant inhabitant = new Inhabitant();
-        inhabitant.setName("Pawel");
-        inhabitant.setSurname("Lenczewski");
-        inhabitant.setHomeNumber("16J");
-        inhabitant.setStreet("Sobieskiego");
-        inhabitant.setLocalNumber("41");
-        return inhabitant;
+        return Inhabitant.builder()
+                .setName("Pawel")
+                .setSurname("Lenczewski")
+                .setHomeNumber("16J")
+                .setStreet("Sobieskiego")
+                .setLocalNumber("41")
+                .build();
     }
     private Inhabitant createInhabitant2(){
-        Inhabitant inhabitant = new Inhabitant();
-        inhabitant.setName("Marek");
-        inhabitant.setSurname("Lenczewski");
-        inhabitant.setHomeNumber("16J");
-        inhabitant.setStreet("Sobieskiego");
-        inhabitant.setLocalNumber("41");
-        return inhabitant;
+        return Inhabitant.builder()
+                .setName("Marek")
+                .setSurname("Lenczewski")
+                .setHomeNumber("16J")
+                .setStreet("Sobieskiego")
+                .setLocalNumber("41")
+                .build();
     }
 }
