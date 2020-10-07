@@ -44,11 +44,11 @@ public class VoiceMainService {
     private Voices createVoicesToPersist(List<Long> idsOfGlobalProject, List<Long> idsOfLocalProjects, String token) {
         List<LocalProject> localProjects = localProjectRepository.findAllByIdIn(idsOfLocalProjects);
         List<GlobalProject> globalProjects = globalProjectRepository.findAllByIdIn(idsOfGlobalProject);
-        Voices voice = new Voices();
-        voice.setGlobalProject(globalProjects);
-        voice.setLocalProject(localProjects);
-        voice.setInhabitant(voteTokenVerificationRepository.getByValue(token).get().getInhabitant());
-        return voice;
+        return Voices.builder()
+                .setGlobalProjects(globalProjects)
+                .setLocalProjects(localProjects)
+                .setInhabitant(voteTokenVerificationRepository.getByValue(token).get().getInhabitant())
+                .build();
     }
 
     private void blockInhabitantByTokenValueAndDeleteToken(String value) {

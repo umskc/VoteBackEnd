@@ -17,28 +17,50 @@ public class VoteRequest {
         this.token = token;
     }
 
-
     public List<Long> getIdsOfLocalprojects() {
         return idsOfLocalprojects;
-    }
-
-    public void setIdsOfLocalprojects(List<Long> idsOfLocalprojects) {
-        this.idsOfLocalprojects = idsOfLocalprojects;
     }
 
     public List<Long> getIdsOfGlobalprojects() {
         return idsOfGlobalprojects;
     }
 
-    public void setIdsOfGlobalprojects(List<Long> idsOfGlobalprojects) {
-        this.idsOfGlobalprojects = idsOfGlobalprojects;
-    }
-
     public String getToken() {
         return token;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+
+        public Builder() {
+
+        }
+
+        private List<Long> idsOfLocalprojects;
+        private List<Long> idsOfGlobalprojects;
+        private String token;
+
+        public Builder setIdsOfLocalProjects(List<Long> idsOfLocalProjects) {
+            this.idsOfLocalprojects = idsOfLocalProjects;
+            return this;
+        }
+
+        public Builder setIdsOfGlobalProjects(List<Long> idsOfGlobalProjects) {
+            this.idsOfGlobalprojects = idsOfGlobalProjects;
+            return this;
+        }
+
+        public Builder settoken(String token) {
+            this.token = token;
+            return this;
+        }
+
+        public VoteRequest build() {
+            //todo validation
+            return new VoteRequest(idsOfLocalprojects, idsOfGlobalprojects, token);
+        }
     }
 }

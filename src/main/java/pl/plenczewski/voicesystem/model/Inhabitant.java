@@ -111,6 +111,7 @@ public class Inhabitant {
         }
 
         public Inhabitant build() {
+            //todo validation
             return new Inhabitant(id, name, surname, street, homeNumber, localNumber);
         }
 
