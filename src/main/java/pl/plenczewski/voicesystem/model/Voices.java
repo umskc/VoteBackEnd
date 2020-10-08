@@ -18,35 +18,71 @@ public class Voices {
     public Voices() {
     }
 
-    public Inhabitant getInhabitant() {
-        return inhabitant;
+    public Voices(Long id, List<GlobalProject> globalProjects, List<LocalProject> localProjects, Inhabitant inhabitant) {
+        this.id = id;
+        this.globalProject = globalProjects;
+        this.localProject = localProjects;
+        this.inhabitant = inhabitant;
     }
 
-    public void setInhabitant(Inhabitant inhabitant) {
-        this.inhabitant = inhabitant;
+    public Inhabitant getInhabitant() {
+        return inhabitant;
     }
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public List<GlobalProject> getGlobalProject() {
         return globalProject;
-    }
-
-    public void setGlobalProject(List<GlobalProject> globalProject) {
-        this.globalProject = globalProject;
     }
 
     public List<LocalProject> getLocalProject() {
         return localProject;
     }
 
-    public void setLocalProject(List<LocalProject> localProject) {
-        this.localProject = localProject;
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+
+        private Long id;
+        private List<GlobalProject> globalProjects;
+        private List<LocalProject> localProjects;
+        private Inhabitant inhabitant;
+
+        public Builder setId(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder setGlobalProjects(List<GlobalProject> globalProjects) {
+            this.globalProjects = globalProjects;
+            return this;
+        }
+
+        public Builder setLocalProjects(List<LocalProject> localProjects) {
+            this.localProjects = localProjects;
+            return this;
+        }
+
+        public Builder setInhabitant(Inhabitant inhabitant) {
+            this.inhabitant = inhabitant;
+            return this;
+        }
+
+        public Voices build() {
+            if (globalProjects.size() < 1) {
+                throw new IllegalStateException("Global projects cannot be empty.");
+            }
+            if (localProjects.size() < 1) {
+                throw new IllegalStateException("Local projects cannot be empty.");
+            }
+            if(inhabitant == null) {
+                throw new IllegalStateException("Inhabitant cannot be null.");
+            }
+            return new Voices(id, globalProjects, localProjects, inhabitant);
+        }
     }
 }

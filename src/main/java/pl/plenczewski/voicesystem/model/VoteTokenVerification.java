@@ -1,7 +1,6 @@
 package pl.plenczewski.voicesystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Builder;
 
 import javax.persistence.*;
 
@@ -30,23 +29,45 @@ public class VoteTokenVerification {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getValue() {
         return value;
-    }
-
-    public void setValue(String value) {
-        this.value = value;
     }
 
     public Inhabitant getInhabitant() {
         return inhabitant;
     }
 
-    public void setInhabitant(Inhabitant inhabitant) {
-        this.inhabitant = inhabitant;
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static class Builder {
+
+        public Builder() {
+
+        }
+
+        private String value;
+        private Inhabitant inhabitant;
+
+        public Builder setValue(String value) {
+            this.value = value;
+            return this;
+        }
+
+        public Builder setInhabitant(Inhabitant inhabitant) {
+            this.inhabitant = inhabitant;
+            return this;
+        }
+
+        public VoteTokenVerification build() {
+            if (value == null) {
+                throw new IllegalStateException("Value cannot be null.");
+            }
+            if (inhabitant == null) {
+                throw new IllegalStateException("Inhabitant cannot be null.");
+            }
+            return new VoteTokenVerification(value, inhabitant);
+        }
     }
 }
