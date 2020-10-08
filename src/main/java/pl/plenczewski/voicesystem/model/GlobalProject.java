@@ -63,7 +63,15 @@ public class GlobalProject extends Project {
         }
 
         public GlobalProject build() {
-            //todo validation
+            if (title == null) {
+                throw new IllegalStateException("Title cannot be null.");
+            }
+            if (totalCost == null) {
+                throw new IllegalStateException("Total cost cannot be null.");
+            }
+            if (deadLine == null) {
+                throw new IllegalStateException("Deadline cannot be null.");
+            }
             return new GlobalProject(id, title, totalCost, deadLine);
         }
     }

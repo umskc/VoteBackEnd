@@ -111,7 +111,21 @@ public class Inhabitant {
         }
 
         public Inhabitant build() {
-            //todo validation
+            if (name == null) {
+                throw new IllegalStateException("Name cannot be null.");
+            }
+            if (surname == null) {
+                throw new IllegalStateException("Surname cannot be null.");
+            }
+            if (street == null) {
+                throw new IllegalStateException("Street cannot be null.");
+            }
+            if (homeNumber == null) {
+                throw new IllegalStateException("Home number cannot be null.");
+            }
+            if (localNumber == null) {
+                throw new IllegalStateException("Local number cannot be null.");
+            }
             return new Inhabitant(id, name, surname, street, homeNumber, localNumber);
         }
 

@@ -73,7 +73,15 @@ public class Voices {
         }
 
         public Voices build() {
-            //todo validation
+            if (globalProjects.size() < 1) {
+                throw new IllegalStateException("Global projects cannot be empty.");
+            }
+            if (localProjects.size() < 1) {
+                throw new IllegalStateException("Local projects cannot be empty.");
+            }
+            if(inhabitant == null) {
+                throw new IllegalStateException("Inhabitant cannot be null.");
+            }
             return new Voices(id, globalProjects, localProjects, inhabitant);
         }
     }

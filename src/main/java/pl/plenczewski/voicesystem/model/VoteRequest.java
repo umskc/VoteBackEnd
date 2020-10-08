@@ -59,7 +59,15 @@ public class VoteRequest {
         }
 
         public VoteRequest build() {
-            //todo validation
+            if (idsOfGlobalprojects.size() < 1) {
+                throw new IllegalStateException("Global projects ID's cannot be empty.");
+            }
+            if (idsOfLocalprojects.size() < 1) {
+                throw new IllegalStateException("Local projects ID's cannot be empty.");
+            }
+            if(token == null) {
+                throw new IllegalStateException("Token cannot be null.");
+            }
             return new VoteRequest(idsOfLocalprojects, idsOfGlobalprojects, token);
         }
     }

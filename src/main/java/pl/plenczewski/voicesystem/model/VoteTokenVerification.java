@@ -61,7 +61,12 @@ public class VoteTokenVerification {
         }
 
         public VoteTokenVerification build() {
-            //todo validation
+            if (value == null) {
+                throw new IllegalStateException("Value cannot be null.");
+            }
+            if (inhabitant == null) {
+                throw new IllegalStateException("Inhabitant cannot be null.");
+            }
             return new VoteTokenVerification(value, inhabitant);
         }
     }

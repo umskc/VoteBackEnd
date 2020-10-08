@@ -73,7 +73,18 @@ public class LocalProject extends Project {
         }
 
         public LocalProject build() {
-            //todo validation
+            if (title == null) {
+                throw new IllegalStateException("Title cannot be null.");
+            }
+            if (totalCost == null) {
+                throw new IllegalStateException("Total cost cannot be null.");
+            }
+            if (deadLine == null) {
+                throw new IllegalStateException("Deadline cannot be null.");
+            }
+            if (zone == null) {
+                throw new IllegalStateException("Zone cannot be null.");
+            }
             return new LocalProject(id, title, totalCost, deadLine, zone);
         }
     }
